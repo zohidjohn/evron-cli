@@ -1,0 +1,42 @@
+#!/usr/bin/make -f
+
+export DH_VERBOSE = 1
+
+%:
+	dh $@
+
+# Upstream is a Node app; production node_modules are vendored into the
+# source tree by scripts/build-ppa.sh before debuild (Launchpad has no npm).
+override_dh_auto_configure:
+	@true
+
+override_dh_auto_build:
+	@true
+
+override_dh_auto_test:
+	@true
+
+override_dh_auto_install:
+	install -d debian/evron/usr/lib/evron
+	install -d debian/evron/usr/bin
+	install -d debian/evron/etc/evron
+	install -d debian/evron/usr/share/doc/evron
+	rsync -a \
+		--exclude debian \
+		--exclude .git \
+		--exclude dist \
+		--exclude .env \
+		--exclude .env.local \
+		--exclude '*.log' \
+		./ debian/evron/usr/lib/evron/
+	install -m 0755 debian/evron-wrapper debian/evron/usr/bin/evron
+	if [ -f .env.example ]; then \
+		install -m 0644 .env.example debian/evron/etc/evron/env; \
+	else \
+		printf '%s\n' '# EVRON_OPERATORS=alice:pass' > debian/evron/etc/evron/env; \
+	fi
+	install -m 0644 README.md debian/evron/usr/share/doc/evron/README
+	chmod 755 debian/evron/usr/lib/evron/bin/evron.js
+
+override_dh_strip_nondeterminism:
+	@true

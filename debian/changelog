@@ -1,0 +1,7 @@
+evron (0.2.0-1) noble; urgency=medium
+
+  * Initial Launchpad PPA release.
+  * Chat-style TUI with slash commands and categorized modules.
+  * CVE-vs-target fingerprint mapping.
+
+ -- EVRON Maintainers <CHANGE_ME@example.com>  Tue, 29 Sep 2026 12:00:00 +0000

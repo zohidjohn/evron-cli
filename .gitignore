@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.env
+.env.local
+.env.*.local
+*.tsbuildinfo
+*.log
+.DS_Store
+debian/.debhelper/
+debian/evron/
+debian/files
+debian/*.substvars
+debian/*.debhelper.log

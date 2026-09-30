@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+# System wrapper installed as /usr/bin/evron
+if [[ -f /etc/evron/env ]]; then
+  set -a
+  # shellcheck disable=SC1091
+  source /etc/evron/env
+  set +a
+fi
+exec /usr/bin/env node /usr/lib/evron/bin/evron.js "$@"

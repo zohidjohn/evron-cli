@@ -1,0 +1,19 @@
+Source: evron
+Section: utils
+Priority: optional
+Maintainer: EVRON Maintainers <CHANGE_ME@example.com>
+Build-Depends: debhelper-compat (= 13), rsync
+Standards-Version: 4.6.2
+Homepage: https://github.com/evron-recon/evron
+Rules-Requires-Root: no
+
+Package: evron
+Architecture: all
+Depends: nodejs (>= 18.0.0), ${misc:Depends}
+Description: Passive recon terminal (EVRON)
+ Full-screen Linux TUI for passive security reconnaissance against
+ domains and public IPs (DNS, TLS, headers, tech fingerprints,
+ subdomains, reputation, CVE mapping, and more).
+ .
+ Configure operators and optional API keys in /etc/evron/env after
+ install. Requires Node.js 18+ (Ubuntu 24.04+ recommended).
